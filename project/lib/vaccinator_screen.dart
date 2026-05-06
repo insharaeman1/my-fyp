@@ -372,10 +372,22 @@ class _VaccinatorScreenState extends State<VaccinatorScreen> {
         'timestamp': FieldValue.serverTimestamp(),
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
+      /*ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Session Stored Successfully!"), backgroundColor: Colors.green),
       );
     } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error: $e"), backgroundColor: Colors.red),
+      );
+    }
+  }*/
+        // ✅ Fixed
+       if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Session Stored Successfully!"), backgroundColor: Colors.green),
+    );
+    } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Error: $e"), backgroundColor: Colors.red),
       );

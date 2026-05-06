@@ -636,9 +636,9 @@ class _LoginScreenState extends State<LoginScreen> {
     } on FirebaseAuthException catch (e) {
       // Friendly error messages for users
       String errorMsg = "Login Failed";
-      if (e.code == 'user-not-found') errorMsg = "No user found with this email.";
-      else if (e.code == 'wrong-password') errorMsg = "Incorrect password.";
-      else if (e.code == 'invalid-email') errorMsg = "The email address is badly formatted.";
+      if (e.code == 'user-not-found') { errorMsg = "No user found with this email.";
+      }else if (e.code == 'wrong-password') { errorMsg = "Incorrect password.";
+      }else if (e.code == 'invalid-email') { errorMsg = "The email address is badly formatted.";}
       
       showError(e.message ?? errorMsg);
     } finally {

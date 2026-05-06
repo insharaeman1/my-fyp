@@ -45,7 +45,7 @@ class _SupervisorScreenState extends State<SupervisorScreen> {
               int refused = vacDocs.where((d) => d['status'] == 'refused').length;
               //int absent = vacDocs.where((d) => d['status'] == 'absent').length;
               // ✅ Add underscore to suppress the warning
-              final int _absent = vacDocs.where((d) => d['status'] == 'absent').length; 
+              //final int _absent = vacDocs.where((d) => d['status'] == 'absent').length; 
               int pending = totalChildren - vaccinated;
               double coverage = totalChildren > 0 ? (vaccinated / totalChildren) * 100 : 0;
 

@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginScreen(),
         '/signup': (context) => const SignupScreen(),
         
-        '/vaccinator_screen': (context) => VaccinatorScreen(),
+        '/vaccinator_screen': (context) => const VaccinatorScreen(),
         '/parent_screen': (context) => const ParentScreen(),
         '/supervisor_screen': (context) => const SupervisorScreen(),
         '/finance_screen': (context) => const FinanceScreen(),

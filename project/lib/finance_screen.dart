@@ -122,7 +122,8 @@ class _FinanceScreenState extends State<FinanceScreen> {
           String status = doc['status'] ?? 'pending';
           return DataRow(cells: [
             DataCell(Text(doc['childName'] ?? 'N/A')),
-            DataCell(Text("Rs 50")),
+            //DataCell(Text("Rs 50")),
+            const DataCell(Text("Rs 50")),
             DataCell(Text(status, style: TextStyle(color: status == 'completed' ? Colors.green : Colors.orange, fontWeight: FontWeight.bold))),
           ]);
         }).toList(),
