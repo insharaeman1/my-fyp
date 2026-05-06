@@ -137,7 +137,7 @@ class FullVaccinationPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.HistoryEdu, size: 80, color: Colors.grey.shade300),
+                  Icon(Icons.history_edu, size: 80, color: Colors.grey.shade300),
                   const SizedBox(height: 16),
                   Text(
                     "No vaccination records found",

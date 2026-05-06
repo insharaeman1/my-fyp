@@ -624,10 +624,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
         // 3. Redirect based on Role (Home Screen removed as requested)
         String route = '/login'; // Fallback
-        if (role == 'Vaccinator') route = '/vaccinator_screen';
-        else if (role == 'Supervisor') route = '/supervisor_screen';
-        else if (role == 'Parent') route = '/parent_screen';
-        else if (role == 'Finance Officer') route = '/finance_screen';
+        if (role == 'Vaccinator') { route = '/vaccinator_screen';
+        }else if (role == 'Supervisor'){ route = '/supervisor_screen';
+        }else if (role == 'Parent') { route = '/parent_screen';
+        }else if (role == 'Finance Officer') {route = '/finance_screen';}
 
         Navigator.pushReplacementNamed(context, route);
       } else {
