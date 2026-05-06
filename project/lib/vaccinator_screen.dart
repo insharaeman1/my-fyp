@@ -439,7 +439,7 @@ class _VaccinatorScreenState extends State<VaccinatorScreen> {
                 style: ElevatedButton.styleFrom(backgroundColor: primaryBlue),
                 onPressed: () async {
                   await _saveSessionToFirestore();
-                  if (mounted) Navigator.pop(context);
+                  if (mounted) { Navigator.pop(context);}
                 },
                 child: const Text("Save", style: TextStyle(color: Colors.white)),
               ),
@@ -503,11 +503,21 @@ class _VaccinatorScreenState extends State<VaccinatorScreen> {
     );
   }
 
-  Future<void> _deleteRecord(BuildContext context, String docId) async {
+  /*Future<void> _deleteRecord(BuildContext context, String docId) async {
     try {
       await FirebaseFirestore.instance.collection('vaccinations').doc(docId).delete();
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Record deleted"), backgroundColor: Colors.redAccent));
     } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error: $e")));
+    }
+  }*/
+    Future<void> _deleteRecord(BuildContext context, String docId) async {
+    try {
+      await FirebaseFirestore.instance.collection('vaccinations').doc(docId).delete();
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Record deleted"), backgroundColor: Colors.redAccent));
+    } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error: $e")));
     }
   }
