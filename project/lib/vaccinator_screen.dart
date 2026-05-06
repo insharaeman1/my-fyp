@@ -419,7 +419,7 @@ class _VaccinatorScreenState extends State<VaccinatorScreen> {
                     Icons.calendar_month, 
                     () async {
                       DateTime? picked = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2020), lastDate: DateTime(2030));
-                      if (picked != null) setPopupState(() => _selectedDate = picked);
+                      if (picked != null){ setPopupState(() => _selectedDate = picked);}
                     }
                   ),
                   _buildPickerTile(
@@ -511,7 +511,8 @@ class _VaccinatorScreenState extends State<VaccinatorScreen> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error: $e")));
     }
   }*/
-    Future<void> _deleteRecord(BuildContext context, String docId) async {
+    // ✅ Fixed - remove BuildContext parameter, use context from widget
+    Future<void> _deleteRecord(String docId) async {
     try {
       await FirebaseFirestore.instance.collection('vaccinations').doc(docId).delete();
       if (!mounted) return;
@@ -521,7 +522,6 @@ class _VaccinatorScreenState extends State<VaccinatorScreen> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error: $e")));
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -548,8 +548,8 @@ class _VaccinatorScreenState extends State<VaccinatorScreen> {
                 if (status == "completed") {
                   completed++;
                   vaccinatedChildren.add((data['childId'] ?? doc.id).toString());
-                } else if (status == "refused") refused++;
-                else if (status == "absent") absent++;
+                } else if (status == "refused") { refused++;
+                }else if (status == "absent") { absent++;
               }
 
               int targetCount = childrenDocs.length - vaccinatedChildren.length;
