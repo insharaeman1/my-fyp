@@ -434,16 +434,19 @@ class _VaccinatorScreenState extends State<VaccinatorScreen> {
               ),
             ),
             actions: [
-              TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cancel")),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: primaryBlue),
-                onPressed: () async {
-                  await _saveSessionToFirestore();
-                  if (mounted) { Navigator.pop(context);}
-                },
-                child: const Text("Save", style: TextStyle(color: Colors.white)),
-              ),
-            ],
+  TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cancel")),
+  ElevatedButton(
+    style: ElevatedButton.styleFrom(backgroundColor: primaryBlue),
+    onPressed: () async {
+      final navigator = Navigator.of(context); // ← capture before await
+      await _saveSessionToFirestore();
+      if (mounted) {
+        navigator.pop(); // ← use captured navigator
+      }
+    },
+    child: const Text("Save", style: TextStyle(color: Colors.white)),
+  ),
+],
           );
         }
       ),
