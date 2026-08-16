@@ -4,10 +4,6 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-// ─────────────────────────────────────────────
-//  MODELS (inline — no Firebase needed in tests)
-// ─────────────────────────────────────────────
-
 class Child {
   final String id;
   final String name;
